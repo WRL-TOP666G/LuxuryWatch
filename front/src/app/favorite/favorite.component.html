@@ -1,0 +1,15 @@
+<h2 class="title">My Favorite</h2>
+<hr>
+<main class="products-container">
+
+
+
+  <section class="products-list-section">
+    <div class="products-list-container">
+      <ng-container *ngIf="favoriteProducts"> <!--will add a temp wrapper, like a virtual wrapper -> don't add and extra ele to DOM -->
+        <app-product-overview  [product]="p" *ngFor="let p of favoriteProducts"></app-product-overview>
+      </ng-container>
+
+    </div>
+  </section>
+</main>

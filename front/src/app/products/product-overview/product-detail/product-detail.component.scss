@@ -1,0 +1,37 @@
+.example-card {
+  margin-left: 100px;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  padding: 20px;
+  width: 80%;
+}
+
+.example-card-review {
+  margin-left: 100px;
+  margin-top: 30px;
+  padding-left: 20px;
+  width: 80%;
+}
+.product-detail-image{
+  width: 80%;
+  height: auto;
+}
+.material-icons{
+  font-size: 18px;
+  margin-left: 3px;
+  margin-right: 3px;
+  transform: translateY(4px);
+}
+.counter{
+  margin-bottom: 10px;
+  width: 40px;
+}
+
+
+ngb-rating{
+  color: #FFC107;
+}
+
+.favorite-button{
+  color: red;
+}

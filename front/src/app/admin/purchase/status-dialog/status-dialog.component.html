@@ -1,0 +1,17 @@
+<form [formGroup]="statusForm" (ngSubmit)="onFormSubmit()">
+  <h2 class="warming">CANNOT change after make a modification</h2>
+  <mat-checkbox class="example-margin" formControlName="cancel" [disabled]="disabledCancel" (click)="doDisComplete()"> Cancel this purchase?</mat-checkbox>
+  <mat-checkbox class="example-margin" formControlName="complete" [disabled]="disabledComplete" (click)="doDisCancel()"> Complete this purchase?</mat-checkbox>
+<!--  <section>-->
+<!--    <mat-radio-group [(ngModel)]="action">-->
+<!--      <mat-radio-button class="example-margin" value="cancel">Cancel</mat-radio-button>-->
+<!--      <mat-radio-button class="example-margin" value="complete">Complete</mat-radio-button>-->
+<!--    </mat-radio-group>-->
+<!--  </section>-->
+
+
+  <div mat-dialog-actions class="action">
+    <button class="Yes" mat-raised-button color="primary" type="submit">Yes</button>
+    <button class="No" mat-raised-button color="warn" type="button" matDialogClose>No</button>
+  </div>
+</form>

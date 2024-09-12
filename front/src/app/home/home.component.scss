@@ -1,0 +1,30 @@
+
+//.watch-brand-img{
+//  //height: 70px;
+//  //width: auto;
+//  margin-left: 7px;
+//  margin-right: 7px;
+//}
+//
+//.watch-brand-img.expanded{
+//  height: 400px;
+//  width: auto;
+//  margin-left: 5px;
+//  margin-right: 5px;
+//}
+
+//.test-expand{
+//  width:400px;
+//  height: auto;
+//}
+//
+//.test-expand.expanded {
+//  width: 1000px;   /* Set the desired width for the expanded image */
+//  height: auto;   /* Adjust the height proportionally */
+//}
+.logo-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

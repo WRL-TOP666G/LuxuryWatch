@@ -1,0 +1,92 @@
+<!--<div>-->
+<!--  <a class="navbar-brand" href="#">{{title}}</a>-->
+
+<!--  <a class="my-account" href="#">-->
+<!--    <button  mat-raised-button >-->
+<!--&lt;!&ndash;      <img src="https://thenounproject.com/api/private/icons/5593607/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" width="50px", height="50px">&ndash;&gt;-->
+<!--      My Account-->
+<!--    </button>-->
+<!--  </a>-->
+
+<!--</div>-->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3 d-block">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Renaissance</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/products" routerLinkActive="my-active" class="nav-link">All Watch</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <a class="dropbtn" routerLink="/" routerLinkActive="my-active" class="nav-link">Brands</a>
+          <div class="dropdown-content">
+            <!--          <ng-container *ngFor="brand "-->
+            <a href="/products" *ngFor="let brand of brands">{{brand}}</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/" routerLinkActive="my-active" class="nav-link">Contact</a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+      <ng-container *ngIf="role?.type=='USER'">
+        <!--        <li class = "nav-item">-->
+        <!--          <a routerLink="/purchase-history" routerLinkActive="my-active" class="nav-link">-->
+        <!--            Purchase History-->
+        <!--          </a>-->
+        <!--        </li>-->
+        <!--        <li class="nav-item">-->
+        <!--          <a routerLink="/cart" routerLinkActive="my-active" class="nav-link">Cart</a>-->
+        <!--        </li>-->
+        <div class="dropdown">
+          <a class="dropbtn" routerLink="/" class="nav-link">Shopping</a>
+          <li class="dropdown-content" >
+            <a href="/favorite" class="nav-link">Favorite</a>
+            <a href="/cart" class="nav-link">Cart</a>
+            <a href="/purchase-history" class="nav-link">Purchase History</a>
+          </li>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="role?.type=='ADMIN'">
+        <div class="dropdown">
+          <a class="dropbtn" routerLink="/" class="nav-link">Dashboard</a>
+          <li class="dropdown-content" >
+            <a href="/analysis" class="nav-link">Analysis</a>
+            <a href="/users" class="nav-link">Users</a>
+            <a href="/all-products" class="nav-link">Products</a>
+            <a href="/add-products" class="nav-link">Add Products</a>
+            <a href="/reviews" class="nav-link">Reviews</a>
+            <a href="/purchase" class="nav-link">Purchase History</a>
+          </li>
+        </div>
+      </ng-container>
+
+      <div class="dropdown">
+        <a class="dropbtn" routerLink="/" routerLinkActive="my-active" class="nav-link">My Account</a>
+        <li class="dropdown-content" *ngIf="!auth.user; else logoutTemplate">
+          <a href="/register" class="nav-link">Register</a>
+          <a href="/login" class="nav-link">Login</a>
+        </li>
+
+        <ng-template #logoutTemplate>
+          <li class="dropdown-content" >
+            <a [routerLink]="['/userinfo', id]">My Info</a>
+            <a (click)="auth.logout()" class="nav-link">Logout</a>
+          </li>
+        </ng-template>
+      </div>
+
+
+    </ul>
+
+  </div>
+
+
+</nav>

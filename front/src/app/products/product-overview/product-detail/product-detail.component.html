@@ -1,0 +1,69 @@
+<mat-card class="example-card">
+  <div *ngIf="product" class="container-fluid">
+    <div class="row product-detail-container">
+      <div class="col-sm-9">
+        <div class="product-detail-image-container text-center">
+          <img src="{{product.picture}}" class="product-detail-image" width="1000" height="600">
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-3 product-detail-info-container">
+
+        <button mat-icon-button (click)="toggleSelected()" [disabled]="disabledID">
+          <mat-icon class="favorite-button"
+                    *ngIf="selected"
+                    aria-label="Example icon-button with a heart icon">
+            favorite
+          </mat-icon>
+
+          <mat-icon
+            *ngIf="!selected"
+            aria-label="Example icon-button with a heart icon">
+            favorite_border
+          </mat-icon>
+        </button>
+
+
+        <h1>{{product.model}}</h1>
+        <p class="product-detail-info-brand">
+          Sold by {{product.manufacturer}}
+        </p>
+        <p class="product-detail-info-price">
+          ${{product.price}}
+        </p>
+        <p>{{product.year}}</p>
+        <p>{{product.style}}</p>
+        <p>{{product.size}}mm</p>
+        <p>{{product.material}}</p>
+        <p>{{product.movement}}</p>
+
+        <div class="incre-decre">
+          <button class="material-icons de-button" (click)="Decrement1()">remove_circle</button>
+          <input class="counter" type="text" [(ngModel)]="count">
+          <button class="material-icons in-button" (click)="Increment1()">add_circle</button>
+        </div>
+
+        <div class="product-detail-info-cart-button-container">
+          <span>
+            <button class="btn btn-primary btn-block" (click)="add2Cart()">ADD TO CART</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+<div class="review">
+  <ng-container *ngIf="reviews">
+    <mat-card class="example-card-review">
+      <ng-container *ngFor="let review of reviews">
+        <p>{{review.review_date.split('.')[0].replace('T', ' ')}}</p>
+        <ngb-rating [max]="5" [rate]="!review? 0 : review.rating? review.rating: 0" [readonly]="true"></ngb-rating>
+        <p>{{review.comment}}</p>
+      </ng-container>
+    </mat-card>
+  </ng-container>
+</div>
+

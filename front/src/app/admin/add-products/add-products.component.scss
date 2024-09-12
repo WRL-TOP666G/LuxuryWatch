@@ -1,0 +1,38 @@
+h1{
+  color: blueviolet;
+  text-align: center;
+}
+.add-product{
+  text-align: center;
+}
+
+.common-form {
+  display: flex;
+  //flex-direction: column;
+  width: 1000px;
+  margin: auto;
+}
+.form-input-container{
+  margin: 10px;
+}
+
+.form-input {
+  height: 35px;
+  width: 300px;
+  margin-bottom: 20px;
+  border: 1px solid blueviolet;
+  padding-left: 15px;
+  color: blueviolet;
+}
+.form-button {
+  height: 35px;
+  border: 1px solid blueviolet;
+  color: blueviolet;
+  cursor: pointer;
+}
+
+.uploadPicture{
+  width: 1000px;
+  margin: 10px;
+  border: 1px solid black;
+}

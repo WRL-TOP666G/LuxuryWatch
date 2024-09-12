@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "l-watch-micro"
+  },
+  "targets": {
+    "l-watch-micro": {
+      "hosting": {
+        "front_luxuryWatch": [
+          "l-watch-micro"
+        ]
+      }
+    }
+  }
+}

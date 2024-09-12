@@ -1,0 +1,128 @@
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-100 {
+  -ms-flex: 100%; /* IE10 */
+  flex: 100%;
+}
+
+.col-25,
+.col-50,
+.col-75,
+.col-100 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.accepted-cards{
+  font-size: 15px;
+  font-style: normal;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.price-total{
+  color: black;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+i{
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+.payment{
+  margin-top: 7px;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Right Side of container */
+.right-side {
+  background-color: #f2f2f2;
+  padding: 1rem;
+}
+
+.receipt-heading {
+  font-size: 1.6rem;
+  text-align: left;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0 1.2rem;
+  color: #93938e;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.total td {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.price {
+  text-align: end;
+}
+
+
+
+
+
+

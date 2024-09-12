@@ -1,0 +1,34 @@
+.first-container{
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  height: 800px;
+  opacity: 1;
+  //background:no-repeat;
+  //background-position: center;
+}
+
+.img-container{
+  position: relative;
+}
+
+#title,
+#paragraph {
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  transform: translate(-20%, -50%);
+  text-align: right;
+  color: #FFFAE6;
+}
+
+#title {
+  font-size: 100px;
+  margin-top: -60px; /* Half of the font size to vertically center the text */
+}
+
+#paragraph {
+  font-size: 20px;
+  margin-top: 10px;
+}
+

@@ -1,0 +1,7 @@
+<mat-card class="example-card">
+  <a *ngIf="product" [routerLink]="['/product-detail', product.id]">
+    <div>
+      <img src="{{product?.picture}}" width="200" height="160">
+    </div>
+  </a>
+</mat-card>

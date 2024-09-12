@@ -1,0 +1,59 @@
+
+
+
+<!--<div class="bg-holder" style="background-image:url(https://www.artsandcollections.com/wp-content/uploads/2018/10/luxury-watch-companies.jpg);">-->
+<!--</div>-->
+
+<!--<div [ngStyle]="{'background-image': 'url('+ imageUrl + ')'}" class="first-container">-->
+<!--    <h1 id="title">Renaissance</h1>-->
+<!--    <p id="paragraph">The most gorgeous, luxury watches in the world</p>-->
+<!--</div>-->
+
+<!--<div [ngStyle]="{'background-image': 'url('+ imageUrl + ')'}" class="first-container">-->
+<!--</div>-->
+
+
+<app-pics-top></app-pics-top>
+
+<div class="logo-container">
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Breguet_logo.png"
+         [@isExpand]="isExpanded.get('Breguet')" (mouseover)="expandImage('Breguet')" (mouseout)="shrinkImage('Breguet')" alt="Breguet">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Logo_Chopard.svg.png"
+         [@isExpand]="isExpanded.get('Chopard')" (mouseover)="expandImage('Chopard')" (mouseout)="shrinkImage('Chopard')" alt="Chopard">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Graff_Logo.svg.png"
+         [@isExpand]="isExpanded.get('Graff')" (mouseover)="expandImage('Graff')" (mouseout)="shrinkImage('Graff')" alt="Graff">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Jacob_&_Co_Logo.jpg"
+         [@isExpand]="isExpanded.get('Jacob_Co')" (mouseover)="expandImage('Jacob_Co')" (mouseout)="shrinkImage('Jacob_Co')" alt="Jacob & Co.">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Jaeger-LeCoultre_logo.svg.png"
+         [@isExpand]="isExpanded.get('Jaeger_LeCoultre')" (mouseover)="expandImage('Jaeger_LeCoultre')" (mouseout)="shrinkImage('Jaeger_LeCoultre')" alt="Jaeger-LeCoultre">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Patek_Philippe_SA_logo.svg.png"
+         [@isExpand]="isExpanded.get('Patek_Philippe')" (mouseover)="expandImage('Patek_Philippe')" (mouseout)="shrinkImage('Patek_Philippe')" alt="Patek Philippe">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Rolex_logo.svg.png"
+         [@isExpand]="isExpanded.get('Rolex')" (mouseover)="expandImage('Rolex')" (mouseout)="shrinkImage('Rolex')" alt="Rolex">
+  </a>
+
+  <a href="/products">
+    <img class="watch-brand-img" src="assets/Vacheron_Constantin_logo.svg.png"
+         [@isExpand]="isExpanded.get('Vacheron_Constantin')" (mouseover)="expandImage('Vacheron_Constantin')" (mouseout)="shrinkImage('Vacheron_Constantin')"  alt="Vacheron Constantin">
+  </a>
+</div>
+

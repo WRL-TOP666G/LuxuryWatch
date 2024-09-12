@@ -1,0 +1,9 @@
+<form [formGroup]="cancelForm" (ngSubmit)="onFormSubmit()">
+  <h2 class="warming">If you cancel your purchase, you CANNOT change back to 'Pending'</h2>
+  <mat-checkbox class="example-margin" formControlName="cancel"> Cancel this purchase?</mat-checkbox>
+  <div mat-dialog-actions class="action">
+    <button class="Yes" mat-raised-button color="primary" type="submit">Yes</button>
+    <button class="No" mat-raised-button color="warn" type="button" matDialogClose>No</button>
+  </div>
+</form>
+

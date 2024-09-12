@@ -1,0 +1,166 @@
+<h2>Products</h2>
+<hr>
+<main class="products-container">
+  <div class="filter-container">
+<!--  <div class="products-filter-section">-->
+    <div class="filter-label-container">
+      <button (click)="clearAll()">Clear All</button>
+
+      <ng-container *ngIf="checkBrands">
+        <p>{{checkBrands}}
+          <button (click)="clearBrands()">x</button>
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="checkPrices">
+        <p>{{checkPrices}}
+          <button (click)="clearPrices()">x</button>
+        </p>
+      </ng-container>
+
+
+      <ng-container *ngIf="checkYears">
+        <p>{{checkYears}}
+          <button (click)="clearYears()">x</button>
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="checkStyles">
+        <p>{{checkStyles}}
+          <button (click)="clearStyles()">x</button>
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="checkSizes">
+        <p>{{checkSizes}} mm
+          <button (click)="clearSizes()">x</button>
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="checkMaterials">
+        <p>{{checkMaterials}}
+          <button (click)="clearMaterials()">x</button>
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="checkMovements">
+        <p>{{checkMovements}}
+          <button (click)="clearMovements()">x</button>
+        </p>
+      </ng-container>
+
+    </div>
+
+    <section class="products-filter-section">
+<!--      <h2>Brands</h2>-->
+      <button (click)="showBrands=!showBrands">Brands</button><br>
+      <ng-container *ngIf="brands && showBrands">
+        <mat-radio-group [(ngModel)]="checkBrands">
+          <mat-radio-button *ngFor="let brand of brands" [value]="brand['key']">
+            {{brand['key']}}
+            ({{brand['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+
+    <section class="products-filter-section">
+<!--      <h2>Price</h2>-->
+      <button (click)="showPrices=!showPrices">Prices</button><br>
+      <ng-container *ngIf="prices && showPrices">
+        <mat-radio-group [(ngModel)]="checkPrices">
+          <mat-radio-button *ngFor="let price of prices" [value]="price['key']">
+            {{price['key']}}
+            ({{price['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+
+    <section class="products-filter-section">
+      <button (click)="showYears=!showYears">Years</button><br>
+      <ng-container *ngIf="years && showYears">
+        <mat-radio-group [(ngModel)]="checkYears">
+          <mat-radio-button *ngFor="let year of years" [value]="year['key']">
+            {{year['key']}}
+            ({{year['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+
+    <section class="products-filter-section">
+<!--      <h2>Style</h2>-->
+      <button (click)="showStyles=!showStyles">Styles</button><br>
+      <ng-container *ngIf="styles && showStyles">
+        <mat-radio-group [(ngModel)]="checkStyles">
+          <mat-radio-button *ngFor="let style of styles" [value]="style['key']">
+            {{style['key']}}
+            ({{style['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+
+    <section class="products-filter-section">
+<!--      <h2>Sizes</h2>-->
+      <button (click)="showSizes=!showSizes">Sizes</button><br>
+      <ng-container *ngIf="sizes && showSizes">
+        <mat-radio-group [(ngModel)]="checkSizes">
+          <mat-radio-button *ngFor="let size of sizes" [value]="size['key']">
+            <ng-container *ngIf="size['key']">{{size['key']}} mm</ng-container>
+            <ng-container *ngIf="!size['key']">null</ng-container>
+            ({{size['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+
+    <section class="products-filter-section">
+<!--      <h2>Materials</h2>-->
+      <button (click)="showMaterials=!showMaterials">Materials</button><br>
+      <ng-container *ngIf="materials && showMaterials">
+        <mat-radio-group [(ngModel)]="checkMaterials">
+          <mat-radio-button *ngFor="let material of materials" [value]="material['key']">
+            {{material['key']}}
+            ({{material['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+
+    <section class="products-filter-section">
+<!--      <h2>Movement</h2>-->
+      <button (click)="showMovements=!showMovements">Movements</button><br>
+      <ng-container *ngIf="movements && showMovements">
+        <mat-radio-group [(ngModel)]="checkMovements">
+          <mat-radio-button *ngFor="let movement of movements" [value]="movement['key']">
+            {{movement['key']}}
+            ({{movement['freq']}})
+          </mat-radio-button>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+<!--  </div>-->
+
+
+  </div>
+
+
+  <section class="products-list-section">
+    <div class="products-list-container">
+      <ng-container *ngIf="products"> <!--will add a temp wrapper, like a virtual wrapper -> don't add and extra ele to DOM -->
+        <app-product-overview  [product]="p" *ngFor="let p of products |
+        productFilter:
+          checkBrands:
+          checkPrices:
+          checkYears:
+          checkStyles:
+          checkSizes:
+          checkMaterials:
+          checkMovements"></app-product-overview>
+      </ng-container>
+
+    </div>
+  </section>
+</main>

@@ -1,0 +1,148 @@
+
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+    <mat-card fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+        <mat-card-header>
+            <mat-card-title>User Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+            <!--
+              2. reactive form
+                pros :good for unit test, flexible to setup custom validations
+                cons: cant be complicated to implement
+
+            -->
+            <form fxLayout="column" [formGroup]="UserInfoFormGroup" (ngSubmit)="updateInfo()">
+                <mat-form-field>
+                    <mat-label>name</mat-label>
+                    <input type="text" matInput formControlName="name" [value]="userinfo? (userinfo?.name ? userinfo.name:'') : ''">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>phone</mat-label>
+                    <input type="text" matInput formControlName="phone" [value]="userinfo? (userinfo?.phone ? userinfo.phone:'') : ''">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>email</mat-label>
+                    <input type="text" matInput placeholder="pat@example.com" formControlName="email" [value]="userinfo? (userinfo?.email ? userinfo.email:'') : ''" >
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>address1</mat-label>
+                    <input type="text" matInput formControlName="address1" [value]="userinfo? (userinfo?.address1 ? userinfo.address1:'') : ''">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>address2</mat-label>
+                    <input type="text" matInput formControlName="address2" [value]="userinfo? (userinfo?.address2 ? userinfo.address2:'') : ''">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>city</mat-label>
+                    <input type="text" matInput formControlName="city" [value]="userinfo? (userinfo?.city ? userinfo.city:'') : ''">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>state</mat-label>
+                    <input type="text" matInput formControlName="state" [value]="userinfo? (userinfo?.state ? userinfo.state:'') : ''">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>zip</mat-label>
+                    <input type="text" matInput formControlName="zip" [value]="userinfo? (userinfo?.zip ? userinfo.zip.toString(): '') : ''">
+                </mat-form-field>
+
+                <div>
+                    <button type="submit" mat-raised-button color="primary">Update</button>
+                </div>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>
+
+<!--<div>-->
+<!--  <mat-card class="login-card" fxFlex="100%" fxFlex.gt-xs="60%" fxFlexOffset.gt-sm="20%">-->
+<!--    <mat-card-title>Login</mat-card-title>-->
+
+<!--    <form ngForm #loginFormInstance="ngForm" fxLayout="column" (ngSubmit)="updateInfo()">-->
+<!--      <mat-form-field>-->
+<!--        <mat-label>Username</mat-label>-->
+<!--        <input matInput type="text"  ngModel name="username" required minlength="3">-->
+<!--        <mat-error>Your username must be no less than 3 characters long</mat-error>-->
+<!--      </mat-form-field>-->
+<!--      <mat-form-field>-->
+<!--        <mat-label>Password</mat-label>-->
+<!--        <input matInput type="password" ngModel name="password" required>-->
+<!--        <mat-error>Password is required</mat-error>-->
+<!--      </mat-form-field>-->
+<!--      <div>-->
+<!--        &lt;!&ndash; disabled -> button &ndash;&gt;-->
+<!--        <button mat-raised-button type="submit" [disabled]="!!loginFormInstance.invalid">Login</button> &nbsp;-->
+<!--        <a routerLink="/register" mat-button color="accent">Register</a>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </mat-card>-->
+<!--</div>-->
+<div>
+    <!--  <div>-->
+    <!--    <form [formGroup]="form">-->
+    <!--      <h4>Nested Selects: Country-State-City</h4>-->
+    <!--      <mat-form-field appearance="fill">-->
+    <!--        <mat-label>Country</mat-label>-->
+    <!--        <mat-select-->
+    <!--          [formControl]="country"-->
+    <!--          name="country"-->
+    <!--          [errorStateMatcher]="matcher"-->
+    <!--        >-->
+    <!--          <mat-option *ngFor="let country of countries" [value]="country.shortName">-->
+    <!--            {{ country.name }}-->
+    <!--          </mat-option>-->
+    <!--        </mat-select>-->
+    <!--        <mat-error *ngIf="country.hasError('required')"-->
+    <!--        >Please select a country.</mat-error-->
+    <!--        >-->
+    <!--      </mat-form-field>-->
+    <!--      <button mat-stroked-button class="btn" (click)="country.reset()">-->
+    <!--        Clear-->
+    <!--      </button>-->
+    <!--      <p></p>-->
+    <!--      <mat-form-field appearance="fill">-->
+    <!--        <mat-label>State</mat-label>-->
+    <!--        <mat-select-->
+    <!--          [formControl]="state"-->
+    <!--          name="state"-->
+    <!--          [errorStateMatcher]="matcher"-->
+    <!--        >-->
+    <!--          <mat-option *ngFor="let state of states" [value]="state">-->
+    <!--            {{ state }}-->
+    <!--          </mat-option>-->
+    <!--        </mat-select>-->
+    <!--        <mat-error *ngIf="state.hasError('required')"-->
+    <!--        >Please select a state.</mat-error-->
+    <!--        >-->
+    <!--      </mat-form-field>-->
+    <!--      <button mat-stroked-button class="btn" (click)="state.reset()">Clear</button>-->
+    <!--      <p></p>-->
+    <!--      <mat-form-field appearance="fill">-->
+    <!--        <mat-label>City</mat-label>-->
+    <!--        <mat-select [formControl]="city" name="city" [errorStateMatcher]="matcher">-->
+    <!--          <mat-option *ngFor="let city of cities" [value]="city">-->
+    <!--            {{ city }}-->
+    <!--          </mat-option>-->
+    <!--        </mat-select>-->
+    <!--        <mat-error *ngIf="city.hasError('required')"-->
+    <!--        >Please select a city.</mat-error-->
+    <!--        >-->
+    <!--      </mat-form-field>-->
+    <!--      <button mat-stroked-button class="btn" (click)="city.reset()">Clear</button>-->
+    <!--      <p>Country: {{ country.value }}</p>-->
+    <!--      <p>State: {{ state.value }}</p>-->
+    <!--      <p>City: {{ city.value }}</p>-->
+    <!--    </form>-->
+
+    <!--  </div>-->
+
+</div>

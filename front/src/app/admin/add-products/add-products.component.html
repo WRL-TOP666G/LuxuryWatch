@@ -1,0 +1,33 @@
+<div class="add-product">
+
+  <form #addProduct="ngForm"
+        (ngSubmit)="submit(addProduct)"
+        class="common-form">
+    <div class="uploadPicture">
+      <img  [src]="url" height="450"><br>
+      <input type="file" (change)="selectFile($event)"/>
+    </div>
+
+    <div class="form-input-container">
+      <input type="text" class="form-input" placeholder="Enter Model: White Gold Calibre 89" name="model" ngModel /><br>
+
+      <input type="text" class="form-input" placeholder="Enter Manufacturer: Patek Philippe" name="manufacturer" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Price: 9.99" name="price" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Year: 2000" name="year" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Style: Wrist" name="style" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Size: 77" name="size" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Material: gold" name="material" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Movement: quartz" name="movement" ngModel/><br>
+
+      <input type="text" class="form-input" placeholder="Enter Stock: 999" name="stock" ngModel/><br>
+
+      <button class="form-button">Add Product</button>
+    </div>
+  </form>
+</div>
