@@ -4,9 +4,7 @@ package com.example.LuxuryWatch.Service;
 import com.example.LuxuryWatch.Beam.*;
 import com.example.LuxuryWatch.Dao.CartDao;
 import com.example.LuxuryWatch.Dao.CartItemDao;
-import com.example.LuxuryWatch.Dto.CartCartItemRequestDto;
 import com.example.LuxuryWatch.Dto.CartItemRequestDto;
-import com.example.LuxuryWatch.http.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -110,8 +108,6 @@ public class CartService {
         }
     }
     public ResponseEntity deleteCartItem(int cartItem_id){ // cartItem_id
-
-
         // delete from cart-item
         //      get id from cartItem and delete it in cartItemDao
         // delete from cart

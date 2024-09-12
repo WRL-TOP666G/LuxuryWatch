@@ -25,7 +25,7 @@ public class FavoriteService {
     public Favorite createFavorite(Favorite favorite){
         Favorite favoriteNew = new Favorite();
         favoriteNew.setUser_id(favorite.getUser_id());
-        favoriteNew.setProduct_id(favoriteNew.getProduct_id());
+        favoriteNew.setProduct_id(favorite.getProduct_id());
         return favoriteDao.save(favoriteNew);
     }
 

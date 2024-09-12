@@ -8,6 +8,7 @@ import com.example.LuxuryWatch.Security.JwtService;
 import com.example.LuxuryWatch.Security.UserDetailsServiceImpl;
 import com.example.LuxuryWatch.http.Response;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -105,13 +108,13 @@ public class AuthController {
 //        return ResponseEntity.ok(authService.authenticate(request));
 //    }
 //
-//    @PostMapping("/refresh-token")
-//    public void refreshToken(
-//            HttpServletRequest request,
-//            HttpServletResponse response
-//    ) throws IOException {
-//        authService.refreshToken(request, response);
-//    }
+    @PostMapping("/refresh-token")
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+        authService.refreshToken(request, response);
+    }
     @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         if(userDao.existsByUsername(user.getUsername())){

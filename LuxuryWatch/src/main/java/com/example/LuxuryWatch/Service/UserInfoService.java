@@ -21,11 +21,11 @@ public class UserInfoService {
 
     public List<UserInfo> getAll(){ return userInfoDao.findAll();}
 
-    public UserInfo getByUsername(String username){
-        Optional<UserInfo> p =  userInfoDao.findByName(username);
-        if(p.isPresent()) return p.get();
-        else return null;
-    }
+//    public UserInfo getByUsername(String username){
+//        Optional<UserInfo> p =  userInfoDao.findByName(username);
+//        if(p.isPresent()) return p.get();
+//        else return null;
+//    }
 
     public UserInfo getById(int id){
         Optional<UserInfo> p =  userInfoDao.findById(id);

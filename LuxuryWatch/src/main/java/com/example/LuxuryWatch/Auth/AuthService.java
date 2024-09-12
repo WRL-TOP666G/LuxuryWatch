@@ -9,11 +9,20 @@ import com.example.LuxuryWatch.Security.JwtService;
 import com.example.LuxuryWatch.Service.CartService;
 import com.example.LuxuryWatch.Service.OrderService;
 import com.example.LuxuryWatch.Service.UserInfoService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.http.HttpHeaders;
 import java.util.List;
 
 @Service
@@ -53,5 +62,32 @@ public class AuthService {
     }
 
 
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+        final String authHeader = request.getHeader("Authorization");
+        final String refreshToken;
+        final String username;
+        if(authHeader == null || !authHeader.startsWith("Bearer ")){
+            return;
+        }
+        refreshToken = authHeader.substring(7);
+        username = jwtService.extractUsername(refreshToken);
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null){
 
+//            var userDetails = this.userDetailsService.loadUserByUsername(username);
+            var user = userDao.findByUsername(username);
+            if (jwtService.isTokenValid(refreshToken, user)) {
+                var accessToken = jwtService.generateRefreshToken(user.getUsername());
+                // 20:20
+                var authResponse = AuthResponse.builder()
+                        .success(true)
+                        .user(user)
+                        .token(accessToken)
+                        .build();
+                new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
+            }
+        }
+    }
 }

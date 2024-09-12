@@ -1,13 +1,10 @@
 package com.example.LuxuryWatch.Controller;
 
 import com.example.LuxuryWatch.Beam.*;
-import com.example.LuxuryWatch.Dto.CartCartItemRequestDto;
 import com.example.LuxuryWatch.Dto.CartItemRequestDto;
 import com.example.LuxuryWatch.Service.CartService;
-import com.example.LuxuryWatch.http.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

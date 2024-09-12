@@ -36,7 +36,7 @@ public class ProductService {
             Product productRemove = productDao.findById(id).get();
             if (productRemove == null)  throw new Exception();
 
-            deleteProduct(productRemove);
+            deleteProduct(productRemove.getId());
             return productDao.save(product);
 
         }catch(Exception e){
@@ -45,25 +45,25 @@ public class ProductService {
         }
     }
 
-    public ResponseEntity updateStock(int id){
-        Cart cart = cartDao.findById(id).get();
-        List<CartItem> cartItems= cart.getCartItems();
-        try {
-            for(CartItem cartItem: cartItems){
-                Product product = cartItem.getProduct();
-                int quantity = cartItem.getQuantity();
-                Product productFind = productDao.findById(product.getId()).get();
-                if(productFind == null) throw new Exception();
-                productFind.setStock(product.getStock()-quantity);
-                productDao.save(productFind);
-            }
-
-            return ResponseEntity.ok().body(cartItems);
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    public ResponseEntity updateStock(int id){
+//        Cart cart = cartDao.findById(id).get();
+//        List<CartItem> cartItems= cart.getCartItems();
+//        try {
+//            for(CartItem cartItem: cartItems){
+//                Product product = cartItem.getProduct();
+//                int quantity = cartItem.getQuantity();
+//                Product productFind = productDao.findById(product.getId()).get();
+//                if(productFind == null) throw new Exception();
+//                productFind.setStock(product.getStock()-quantity);
+//                productDao.save(productFind);
+//            }
+//
+//            return ResponseEntity.ok().body(cartItems);
+//        }catch(Exception e){
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
     public ResponseEntity updateProductStock(Product product){
         try {
@@ -81,8 +81,9 @@ public class ProductService {
     }
 
 
-    public String deleteProduct(Product product){
-        productDao.delete(product);
-        return "Success";
+    public Product deleteProduct(int id){
+        Product deletedProduct = productDao.findById(id).get();
+        productDao.delete(deletedProduct);
+        return deletedProduct;
     }
 }
