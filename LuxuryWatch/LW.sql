@@ -1,0 +1,254 @@
+DROP TABLE IF EXISTS LW_USER_INFO;
+DROP TABLE IF EXISTS LW_USER;
+DROP TABLE IF EXISTS LW_ORDER;
+DROP TABLE IF EXISTS LW_PURCHASE;
+DROP TABLE IF EXISTS LW_PRODUCT;
+DROP TABLE IF EXISTS LW_REVIEW;
+DROP TABLE IF EXISTS LW_CART;
+DROP TABLE IF EXISTS LW_CART_ITEM;
+
+DROP TABLE IF EXISTS LW_USER_ROLE;
+DROP TABLE IF EXISTS LW_ROLE;
+----------------------------------------
+--  DDL for Table
+----------------------------------------
+
+CREATE TABLE LW_USER_INFO (
+  ID int,
+  NAME varchar,
+  PHONE varchar,
+  EMAIL varchar,
+  ADDRESS1 varchar,
+  ADDRESS2 varchar,
+  CITY varchar,
+  STATE varchar,
+  ZIP integer,
+  USER_ID int,
+  MEMBERSHIP boolean
+);
+
+CREATE TABLE LW_USER (
+  ID int,
+  USERNAME varchar,
+  PASSWORD varchar
+);
+
+
+CREATE TABLE LW_ORDER (
+  ID int, 
+  PURCHASE_DATE timestamp,
+  USER_ID int
+);
+
+CREATE TABLE LW_PURCHASE (
+  ID int,
+  QUANTITY int DEFAULT 0,
+  ORDER_ID int,
+  PRODUCT_ID int
+);
+
+CREATE TABLE LW_PRODUCT (
+  ID int,
+  MODEL varchar,
+  MANUFACTURER varchar,
+  PRICE float,
+  YEAR integer,
+  STYLE varchar,
+  SIZE integer,
+  MATERIAL varchar,
+  MOVEMENT varchar,
+  PICTURE varchar
+);
+
+CREATE TABLE LW_REVIEW (
+  ID int,
+  USER_ID int,
+  PRODUCT_ID int,
+  RATING float,
+  COMMENT varchar,
+  REVIEW_DATE timestamp
+);
+
+CREATE TABLE LW_CART (
+  ID int,
+  USER_ID integer,
+  STATUS varchar
+);
+
+CREATE TABLE LW_CART_ITEM (
+  ID int,
+  CART_ID int,
+  PRODUCT_ID int,
+  QUANTITY int DEFAULT 0
+);
+
+CREATE TABLE LW_USER_ROLE (
+ USER_ID int, 
+ ROLE_ID int
+);
+   
+CREATE TABLE LW_ROLE (
+  ID int, 
+  TYPE VARCHAR(100) 
+);
+----------------------------------------
+--  DDL for Sequence 
+----------------------------------------
+	
+	
+CREATE SEQUENCE IF NOT EXISTS public.LW_USER_INFO_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_USER_INFO_SEQ
+    OWNER TO postgres;
+	
+	
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_USER_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_USER_SEQ
+    OWNER TO postgres;
+
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_ORDER_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_ORDER_SEQ
+    OWNER TO postgres;
+
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_PURCHASE_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_PURCHASE_SEQ
+    OWNER TO postgres;
+
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_PRODUCT_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_PRODUCT_SEQ
+    OWNER TO postgres;
+
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_REVIEW_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_REVIEW_SEQ
+    OWNER TO postgres;
+
+
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_CART_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_CART_SEQ
+    OWNER TO postgres;
+
+
+CREATE SEQUENCE IF NOT EXISTS public.LW_CART_ITEM_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_CART_ITEM_SEQ
+    OWNER TO postgres;
+
+
+-- CREATE SEQUENCE IF NOT EXISTS public.LW_USER_ROLE_SEQ
+--     INCREMENT 1
+--     START 1
+--     MINVALUE 1
+--     MAXVALUE 9223372036854775807
+--     CACHE 1;
+
+-- ALTER SEQUENCE public.LW_USER_ROLE_SEQ
+--     OWNER TO postgres;
+	
+CREATE SEQUENCE IF NOT EXISTS public.LW_ROLE_SEQ
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.LW_ROLE_SEQ
+    OWNER TO postgres;
+
+----------------------------------------
+--  DDL for Index 
+----------------------------------------
+ALTER TABLE LW_USER_INFO ADD PRIMARY KEY (ID);
+ALTER TABLE LW_USER ADD PRIMARY KEY (ID);
+ALTER TABLE LW_ORDER ADD PRIMARY KEY (ID);
+ALTER TABLE LW_PURCHASE ADD PRIMARY KEY (ID);
+ALTER TABLE LW_PRODUCT ADD PRIMARY KEY (ID);
+ALTER TABLE LW_REVIEW ADD PRIMARY KEY (ID); 
+ALTER TABLE LW_CART ADD PRIMARY KEY (ID);
+ALTER TABLE LW_CART_ITEM ADD PRIMARY KEY (ID);
+ALTER TABLE LW_ROLE ADD PRIMARY KEY (ID);
+
+
+
+----------------------------------------
+-- NO  DDL for Trigger Function 
+----------------------------------------
+--- None
+
+
+Select * from LW_ORDER 
+Select * from LW_PURCHASE 
+Select * from LW_PRODUCT 
+Select * from LW_REVIEW 
+Select * from LW_CART 
+Select * from LW_CART_ITEM 
+
+
+Select * from LW_USER_INFO 
+Select * from LW_USER 
+Select * from LW_USER_ROLE 
+Select * from LW_ROLE 
+
+
+
+
+Insert into LW_ROLE (ID,TYPE) values (1,'ADMIN');
+Insert into LW_ROLE (ID,TYPE) values (2,'USER');
+
+Insert into LW_USER (ID,USERNAME,PASSWORD) values (1, 'admin','$2a$11$aL.ou06hFDE1p23WLTf6..yeq879FxCWZEE8ATEzkU/lw/Utaut2m');
+Insert into LW_USER (ID,USERNAME,PASSWORD) values (2, 'user','$2a$11$D031sn4yBKa8m3KmUc.fGuvjCwwyadyrVgfU3SH23McMenLj9chF.');
+
+
+Insert into LW_USER_ROLE (USER_ID, ROLE_ID) values (1,2);
+Insert into LW_USER_ROLE (USER_ID, ROLE_ID) values (2,2);
